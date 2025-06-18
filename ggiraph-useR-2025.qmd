@@ -1,0 +1,60 @@
+---
+title: 'Plot Twist'
+subtitle: 'Adding Interactivity to the Elegance of <code>ggplot2</code> with <code>ggiraph</code>'
+author:
+  - name: Tanya Shapiro
+    email: tanya@indievisual.tech
+  - name: Cédric Scherer
+    email: viz@cedricscherer.com
+#author: "Cédric Scherer & Tanya Shapiro<br>useR 2025"
+title-slide-attributes:
+    data-background-image: img/bg-placeholder.png
+    data-background-size: cover
+format:
+  revealjs:
+    theme: src/slides.scss
+    footer: ''
+    transition: fade
+    progress: true
+    multiplex: false
+    preview-links: true
+    scrollable: false
+    hide-inactive-cursor: true
+    highlight-style: printing
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 4
+      buttons: true
+    pause: true
+editor: source
+knitr:
+  opts_chunk:
+    dev: "ragg_png"
+    retina: 1
+    dpi: 300
+execute:
+  freeze: auto
+  cache: true
+  echo: true
+  fig-width: 12
+  fig-height: 7.8
+  fig-align: center
+---
+
+## Quarto
+
+Quarto enables you to weave together <b class='simple-highlight-1'>content</b> and <b class='simple-highlight-2'>executable code</b> into a <b class='simple-highlight-3'>finished document</b>. To learn more about Quarto see <https://quarto.org>.
+
+```{r}
+1 + 1
+```
+
+# 🔥🙏💎<br>ggiraph
+
+## `ggiraph`
+
+::: incremental
+1. joyful
+1. beautiful
+1. wonderful
+:::
