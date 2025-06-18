@@ -1,0 +1,370 @@
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&display=swap');
+
+$font-family-main:     'Atkinson Hyperlegible', 'Tahoma', 'Arial', sans-serif;
+$font-family-display:  'Zilla Slab', 'Caladea', 'Bodoni MT', 'Bodoni 72', 'Georgia', 'Times', serif;
+$font-family-mono:     'Atkinson Hyperlegible Mono', 'Consolas', monospace;
+$font-family-serif:    $font-family-display;
+
+$font-size-root:     1.1em;
+$font-size-small:    $font-size-root * .8;
+$font-size-tiny:     $font-size-root * .6;
+$font-size-large:    $font-size-root * 1.1;
+$font-size-h1:       $font-size-root * 2.1;
+$font-size-h2:       $font-size-root * 1.65;
+$font-size-h3:       $font-size-root * 1.3;
+$font-size-caption:  $font-size-root * .35;
+
+$color-black:           #212121;
+$color-gray-dark:       #505050;
+$color-gray-medium:     #9F9F9F;
+$color-gray-light:      #D3D3D3;
+$color-white:           #FEFEFE;
+$color-primary:         #99229B;
+$color-primary-pale:    #E8BEE9;
+$color-primary-dark:    #660068;
+$color-secondary:       #008075;
+$color-secondary-pale:  #A2C6C1;
+$color-secondary-dark:  #004D46;
+$color-tertiary:        #DD6D18;
+$color-tertiary-pale:   #EFD6CE;
+$color-tertiary-dark:   #863E00;
+
+$link-color:               $color-secondary;
+$link-color-hover:         $color-secondary-dark;
+$link-color-visited:       $color-secondary;
+$link-color-dark:          $color-secondary-pale;
+$link-color-hover-dark:    $color-secondary;
+$link-color-visited-dark:  $color-secondary-pale;
+$color-inverse: $color-primary-pale;
+
+$presentation-selection-background-color: $color-primary-pale;
+$presentation-title-slide-text-align: "left";
+$presentation-block-margin: .0375rem;
+
+
+/*-- scss:rules --*/
+
+/*-- general --*/
+
+h3, body, div, p, a, li, figcaption {
+  font-family: $font-family-main !important;
+}
+
+.reveal p {
+  font-family: $font-family-main;
+  font-size: $font-size-root;
+  line-height: 1.4;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.small {
+  font-size: .75rem;
+}
+
+.reveal pre {
+  height: 98.1%
+}
+
+.reveal code {
+  color: $color-primary !important;
+}
+
+/*-- title page --*/
+
+h1.title {
+  font-family: $font-family-display;
+  font-size: $font-size-h1;
+  font-weight: 900;
+  font-style: normal;
+  color: $color-black;
+  line-height: 1.15;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+p.subtitle {
+  font-size: $font-size-large;
+  color: $color-black;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+}
+
+.quarto-title-authors {
+  font-family: $font-family-main;
+  font-size: $font-size-tiny;
+  font-weight: 500;
+  color: $color-gray-dark;
+  font-style: italic;
+  margin-top: 1.5em;
+  text-align: center;
+  justify-content: center;
+}
+
+/*-- section pages --*/
+
+.reveal .title-slide h1 {
+  font-family: $font-family-display;
+  font-feature-settings: "ss02" 1, "ss03" 1;
+  font-size: $font-size-h1;
+  color: $color-primary;
+  font-weight: 700;
+  /*font-style: italic;*/
+  text-align: center;
+  line-height: 1.07;
+  padding-bottom: 150px;
+}
+
+/*-- slide headers --*/
+
+.reveal h2 {
+  font-family: $font-family-display;
+  font-feature-settings: "ss02" 1, "ss03" 1;
+  font-size: $font-size-h2;
+  font-style: normal;
+  color: $color-black;
+  font-weight: 700;
+  margin-bottom: 2.8px;
+}
+
+.center h2 {
+  text-align: center;
+}
+
+.reveal h3 {
+  font-size: $font-size-h3;
+  margin-bottom: 2.8px;
+  font-weight: bold;
+}
+
+/*-- footer --*/
+
+.footer p {
+  font-size: $font-size-root;
+  font-weight: 550;
+  color: #878787;
+}
+
+.reveal .footer a {
+  font-weight: 550;
+}
+
+.reveal .footer.has-light-background a {
+  color: $link-color !important;
+}
+
+.reveal .slide-logo {
+  max-height: 3.4rem !important;
+  padding-bottom: 10px !important;
+}
+
+/*-- lists --*/
+
+.reveal ul, ol {
+  font-size: $font-size-root !important;
+  padding: .5em 0 .2em 1em;
+}y
+
+.reveal li > code {
+  font-size: $font-size-root;
+}
+
+/*-- backgrounds --*/
+
+.backgrounds {
+  background-color: $color-white
+}
+
+.backgrounds .title-slide {
+  background-color: $color-primary-pale
+}
+
+/*-- tables --*/
+
+.reveal table {
+  font-size: $font-size-small;
+  font-family: $font-family-mono;
+}
+
+.lightable-minimal.lightable-hover tbody tr:hover { 
+  background-color: $color-primary !important;
+  color: $color-gray-light;
+}
+
+/*-- images --*/
+
+.reveal .slide figure>figcaption, .reveal .slide img.stretch+p.caption, .reveal .slide img.r-stretch+p.caption  {
+  font-size: $font-size-caption;
+  color: $color-gray-medium;
+  text-align: center;
+  margin-top: 1;
+}
+
+/*-- details --*/
+
+details {
+  margin-bottom: 5px;
+}
+
+details>summary {
+  font-family: $font-family-mono;
+  font-variation-settings: "MONO" 1;
+  font-size: 1.25rem;
+  color: $color-gray-dark;
+}
+
+/*-- code chunks --*/
+
+code>a, code>span {
+  font-family: $font-family-mono;
+  font-size: $font-size-root;
+}
+
+.cell-code, .cell-output {
+  font-size: $font-size-h3;
+}
+
+.cell {
+  margin-bottom: 12px;
+}
+
+/*-- links --*/
+
+a:link,a:visited {
+  color: $link-color;
+}
+
+a:hov {
+  color: $link-color-hover-dark;
+}
+
+.panel-tabset li>a {
+  color: $color-gray-dark;
+  font-size: .6em;
+  font-weight: bold;
+}
+
+/*-- dark mode --*/
+
+section.has-dark-background {
+  color: $color-gray-light;
+}
+
+section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background a, .reveal .footer.has-dark-background a {
+  color: $color-inverse !important;
+}
+
+section.has-dark-background a:hover, .reveal .footer.has-dark-background a:hover {
+  color: $link-color-hover-dark !important;
+}
+
+/*-- slide themes --*/
+
+/*--
+.reveal .slide .question {
+  background: $color-jungle-light;
+  border-left: 7px solid $color-jungle;
+  padding: 0.6rem 0.8rem 0.4rem 1.3rem;
+  margin-top: 2.5rem;
+}
+
+.reveal .slide .exercise {
+  background: $color-yellow-light;
+  border-left: 7px solid $color-yellow;
+  padding: 0.6rem 0.8rem 0.4rem 1.3rem;
+  margin-top: 2.5rem;
+}
+
+.reveal .slide .recap {
+  background: $color-purple-light;
+  border-left: 7px solid $color-purple;
+  padding: 0.6rem 0.8rem 0.4rem 1.3rem;
+  margin-top: 2.5rem;
+}
+
+/*-- decoration --*/
+
+.gradient {
+  background: linear-gradient(to right, $color-primary, $color-primary-dark, $color-tertiary-dark);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.simple-highlight-1 {
+ background-color: $color-primary-pale;
+ padding: 0.035em 0.15em;
+ font-weight: 700;
+}
+
+.simple-highlight-2 {
+ background-color: $color-secondary-pale;
+ padding: 0.035em 0.15em;
+ font-weight: 700;
+}
+
+.simple-highlight-3 {
+ background-color: $color-tertiary-pale;
+ padding: 0.035em 0.15em;
+ font-weight: 700;
+}
+
+.circle-highlight {
+  position: relative;
+}
+
+.circle-highlight:before {
+  content: "";
+  z-index: -1;
+  left: -0.3em;
+  top: -0.06em;
+  border-width: 2.7px;
+  border-style: solid;
+  border-color: $color-primary;
+  position: absolute;
+  border-right-color: transparent;
+  width: 100%;
+  height: 1em;
+  transform: rotate(2deg);
+  opacity: 0.65;
+  border-radius: 75%;
+  padding: 0.1em 0.25em;
+}
+
+.circle-highlight:after {
+  content: "";
+  z-index: -1;
+  left: -0.5em;
+  top: 0.06em;
+  padding: 0.05em 0.29em;
+  border-width: 2.7px;
+  border-style: solid;
+  border-color: $color-primary;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  position:absolute;
+  width: 100%;
+  height: 1em;
+  transform: rotate(-1deg);
+  opacity: 0.65;
+  border-radius: 80%;
+}
+
+/*-- scrollbar --*/
+
+.reveal .slide body::-webkit-scrollbar {
+  display: none;
+}
+
+.hscroll {
+  overflow-x: auto;
+  white-space: nowrap;
+}
