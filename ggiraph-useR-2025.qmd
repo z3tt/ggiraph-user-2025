@@ -41,6 +41,21 @@ execute:
   fig-align: center
 ---
 
+```{r}
+#| label: setup
+#| include: false
+#| cache: false
+library(readr)
+library(dplyr)
+library(ggplot2)
+# library(plotly) # -> include a showcase how ggplotly can change the custom designs?
+library(ggiraph)
+```
+
+
+# 🎤 Check 1, 2
+
+
 ## Quarto
 
 Quarto enables you to weave together <b class='simple-highlight-1'>content</b> and <b class='simple-highlight-2'>executable code</b> into a <b class='simple-highlight-3'>finished document</b>. To learn more about Quarto see <https://quarto.org>.
@@ -49,8 +64,6 @@ Quarto enables you to weave together <b class='simple-highlight-1'>content</b> a
 1 + 1
 ```
 
-# 🔥🙏💎<br>ggiraph
-
 ## `ggiraph`
 
 ::: incremental
@@ -58,3 +71,107 @@ Quarto enables you to weave together <b class='simple-highlight-1'>content</b> a
 1. beautiful
 1. wonderful
 :::
+
+
+# End Test Section
+
+
+# Welcome
+
+
+## Hello, I'm Tanya
+
+
+## Hello, I'm Cédric
+
+
+# Introduction
+
+
+## Why we love ggplot
+
+
+## Why we love interactive vizes
+
+
+## Why we hate plotly
+
+
+## Why we use ggiraph
+
+
+# ggiraph Fundamentals
+
+
+# Avanced (?) Examples
+
+
+##{#simpsons-heatmap-imdb data-menu-title="Simpsons Ratings"
+
+```{r}
+#| label: setup-simpsons
+#| include: false
+#| cache: false
+
+gdtools::register_gfont("Rethink Sans")
+gdtools::addGFontHtmlDependency(family = "Rethink Sans")
+
+gdtools::register_gfont("Piazzolla")
+gdtools::addGFontHtmlDependency(family = "Piazzolla")
+
+tooltip_css <- "background-color:white;padding:15px;border-radius:3px;lineheight:1.4; border:2px solid white;"
+```
+
+```{r}
+#| label: heatmap-simpsons
+#| echo: false
+#| cache: false
+simpsons_imdb <- readr::read_csv("data/simpsons_imdb_ratings.csv")
+
+simp <-
+  simpsons_imdb |> 
+  mutate(
+    title = stringr::str_replace_all(stringr::str_wrap(title, 22), "\\n", "<br>"),
+    text_color = if_else(imdb_rating > 6.3 & imdb_rating < 8.5, "black", "white"),
+    lab = paste0("<span style='font-family:Rethink Sans;color:", text_color, ";'>", "S", sprintf("%02d", season), " E", sprintf("%02d", episode), "<br><b style='font-size:150%;font-weight:600;font-family:piazzolla;'>", title, "</b><br><br>IMDb Rating: ", sprintf("%1.1f", imdb_rating))
+  ) |> 
+  ggplot(aes(x = episode, y = season, fill = imdb_rating)) +
+  geom_tile_interactive(aes(tooltip = lab, data_id = id)) +
+  geomtextpath::geom_texthline(
+    yintercept = 9.5, linewidth = 1, label = "Season 10 starts", 
+    vjust = 1.4, hjust = .995, family = "Rethink Sans", lineheight = .6
+  ) +
+  coord_cartesian(expand = FALSE, clip = "off") +
+  scale_x_continuous(breaks = c(1, 1:5*5), limits = c(NA, 27), position = "top") +
+  scale_y_reverse(breaks = c(1, 1:5*5, 27)) +
+  scico::scale_fill_scico(
+    palette = "roma", name = "IMDb Rating",
+    guide = guide_colorbar(title.position = "top"), midpoint = mean(simpsons_imdb$imdb_rating)
+  ) +
+  labs(title = 'From season 10 onwards, IMDb ratings for\n"The Simpsons" dropped considerably',
+       x = "Episode →", y = "← Season") +
+  theme_minimal(base_family = "Rethink Sans", base_size = 15) +
+  theme(panel.grid = element_blank(),
+        axis.text = element_blank(),
+        axis.title.x.top = element_text(margin = margin(t = 0, b = 6), hjust = 0),
+        axis.title.y = element_text(margin = margin(r = 6), hjust = .99),
+        plot.title.position = "plot",
+        plot.title = element_text(face = "bold", family = "Piazzolla", size = rel(2), margin = margin(b = 25)),
+        legend.position = "top", legend.justification = "left",
+        legend.key.width = unit(6, "lines"), legend.key.height = unit(.45, "lines"),
+        #plot.background = element_rect(fill = "transparent", color = NA),
+        plot.margin = margin(rep(12, 1)))
+
+girafe(
+  ggobj = simp,
+  width_svg = 10.5, height_svg = 8.5,
+  options = list(
+    opts_tooltip(css = tooltip_css, opacity = 1, use_fill = TRUE, offx = 10, offy = 10),
+    opts_sizing(width = .7),
+    opts_hover_inv(css = "opacity:0.3;"),
+    opts_hover(css = "stroke-width:2;")
+  )
+)
+```
+
+
