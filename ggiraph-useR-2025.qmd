@@ -53,60 +53,130 @@ library(ggiraph)
 ```
 
 
-# 🎤 Check 1, 2
+
+# Welcome<br>1 combined slide
 
 
-## Quarto
 
-Quarto enables you to weave together <b class='simple-highlight-1'>content</b> and <b class='simple-highlight-2'>executable code</b> into a <b class='simple-highlight-3'>finished document</b>. To learn more about Quarto see <https://quarto.org>.
+##
 
-```{r}
-1 + 1
-```
+::::: {.columns}
 
-## `ggiraph`
+:::: {.column width="50%"}
 
-::: incremental
-1. joyful
-1. beautiful
-1. wonderful
+### <span class='gradient-1'>Hi, I am Tanya</span>
+
+<div style='margin:-30px 0 30px 0;'>
+<a href='mailto:tanya@indievisual.tech' class='gradient-1' style='font-weight:700;'>tanya@indievisual.tech</a>
+</div>
+
+![](https://images.squarespace-cdn.com/content/v1/6022b7409a0cdd54b1bc0c5f/e2dd9234-dd19-48e5-8c5d-4eb64f7f5ea4/T2.jpg){fig-alt="Headshot of Tanya Shapiro" width="65%"}
+
+<p class='about'>
+<span class='entry'>BEFORE</span><br>
+your previous job here
+</p>
+<p class='about'>
+<span class='entry'>NOW</span><br>
+your freelance title here
+</p>
+
+::::
+
+:::: {.column width="50%"}
+
+::: fragment
+
+### <span class='gradient-2'>Hi, I am Cédric</span>
+
+<div style='margin:-30px 0 30px 0;'>
+<a href='mailto:viz@cedricscherer.com' class='gradient-2' style='font-weight:700;'>viz@cedricscherer.com</a>
+</div>
+
+![](img/ced-circular-logo-jungle.png){fig-alt="Headshot of Cédric Scherer" width="65%"}
+
+<p class='about'>
+<span class='entry'>BEFORE</span><br>
+Computational Ecologist
+</p>
+<p class='about'>
+<span class='entry'>NOW</span><br>
+Independent professional in data visualization & information design
+</p>
+
 :::
 
+::::
 
-# End Test Section
-
-
-# Welcome
+:::::
 
 
-## Hello, I'm Tanya
+
+## Why we love {ggplot2}<br>3 slides
 
 
-## Hello, I'm Cédric
+
+## Why we love {ggplot2}
+
+Grammar of Graphics &rarr; cake slide  
+TODO: Tanya
 
 
-# Introduction
+
+## Why we love {ggplot2}
+
+TODO: Cédric  
+Extensions &rarr; ggplot universe or hex logos 
 
 
-## Why we love ggplot
+
+## Why we love {ggplot2}
+
+TODO: Cédric  
+Community &rarr; illustration from Allison
 
 
-## Why we love interactive vizes
+
+# Why go interactive<br>1 slide
 
 
-## Why we hate plotly
+
+## Why go interactive
+
+TODO: Tanya  
+Use Cases Slide &rarr; storytelling (exploratory), web app development, interactive journalism, wow stakeholders (interactive slides) - but not everything has to be interactive (cf. goal, purpose, budget)  
 
 
-## Why we use ggiraph
+
+# Why {ggiraph}<br>3 slides
 
 
-# ggiraph Fundamentals
+
+## Why {ggiraph}
+
+TODO: Tanya  
+Text / Bullet point list reasons  
 
 
-# Avanced (?) Examples
+
+## Why {ggiraph}
+
+TODO: Tanya  
+Comparing geoms, geom ggplot -> geom ggiraph (show how similar)
 
 
-##{#simpsons-heatmap-imdb data-menu-title="Simpsons Ratings"
+
+## Why {ggiraph}
+
+TODO: Cédric  
+Example of ggiraph vs. ggplotly  - show plotly ruins theme + doesnt allow for extensions
+
+
+
+# Examples
+
+
+## {data-menu-title="Simpsons Ratings"}
 
 ```{r}
 #| label: setup-simpsons
@@ -173,5 +243,21 @@ girafe(
   )
 )
 ```
+
+
+
+## Wrap-Up
+
+
+
+## Questions
+
+
+
+## Thank You
+
+
+
+## Promo
 
 

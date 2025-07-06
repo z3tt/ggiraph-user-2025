@@ -13,7 +13,7 @@ $font-family-display:  'Zilla Slab', 'Caladea', 'Bodoni MT', 'Bodoni 72', 'Georg
 $font-family-mono:     'Atkinson Hyperlegible Mono', 'Consolas', monospace;
 $font-family-serif:    $font-family-display;
 
-$font-size-root:     1.1em;
+$font-size-root:     1.05em;
 $font-size-small:    $font-size-root * .8;
 $font-size-tiny:     $font-size-root * .6;
 $font-size-large:    $font-size-root * 1.1;
@@ -54,8 +54,12 @@ $presentation-block-margin: .0375rem;
 
 /*-- general --*/
 
-h3, body, div, p, a, li, figcaption {
+body, div, p, li, figcaption {
   font-family: $font-family-main !important;
+}
+
+h3, a {
+  font-family: $font-family-display !important;
 }
 
 .reveal p {
@@ -293,8 +297,14 @@ section.has-dark-background a:hover, .reveal .footer.has-dark-background a:hover
 
 /*-- decoration --*/
 
-.gradient {
+.gradient-1 {
   background: linear-gradient(to right, $color-primary, $color-primary-dark, $color-tertiary-dark);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-2 {
+  background: linear-gradient(to right, $color-tertiary-dark, $color-secondary-dark, $color-secondary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -367,4 +377,15 @@ section.has-dark-background a:hover, .reveal .footer.has-dark-background a:hover
 .hscroll {
   overflow-x: auto;
   white-space: nowrap;
+}
+
+.about {
+  font-size: $font-size-small !important;
+  line-height: 1 !important;
+}
+
+.entry {
+  font-family: $font-family-display;
+  font-size: $font-size-tiny;
+  font-weight: 800;
 }
