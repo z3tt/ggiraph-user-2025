@@ -1,12 +1,12 @@
 ---
 title: 'Plot Twist'
-subtitle: 'Adding Interactivity to the Elegance of <code>ggplot2</code> with <code>ggiraph</code>'
-author:
-  - name: Tanya Shapiro
-    email: tanya@indievisual.tech
-  - name: Cédric Scherer
-    email: viz@cedricscherer.com
-#author: "Cédric Scherer & Tanya Shapiro<br>useR 2025"
+subtitle: 'Adding Interactivity to the<br>Elegance of <code>ggplot2</code> with <code>ggiraph</code>'
+# author:
+#   - name: Tanya Shapiro
+#     email: tanya@indievisual.tech
+#   - name: Cédric Scherer
+#     email: viz@cedricscherer.com
+author: "Tanya Shapiro & Cédric Scherer<br>useR 2025"
 title-slide-attributes:
     data-background-image: img/bg-placeholder.png
     data-background-size: cover
@@ -21,10 +21,6 @@ format:
     scrollable: false
     hide-inactive-cursor: true
     highlight-style: printing
-    chalkboard:
-      theme: whiteboard
-      boardmarker-width: 4
-      buttons: true
     pause: true
 editor: source
 knitr:
@@ -34,10 +30,10 @@ knitr:
     dpi: 300
 execute:
   freeze: auto
-  cache: true
+  cache: false
   echo: true
-  fig-width: 12
-  fig-height: 7.8
+  fig-width: 9
+  fig-height: 5.5
   fig-align: center
 ---
 
@@ -48,8 +44,23 @@ execute:
 library(readr)
 library(dplyr)
 library(ggplot2)
-# library(plotly) # -> include a showcase how ggplotly can change the custom designs?
 library(ggiraph)
+
+## fonts for html output
+gdtools::register_gfont("Asap")
+gdtools::register_gfont("Asap Condensed")
+gdtools::register_gfont("Rethink Sans")
+gdtools::register_gfont("Piazzolla")
+gdtools::register_gfont("Spline Sans")
+gdtools::register_gfont("Spline Sans Mono")
+gdtools::addGFontHtmlDependency(family = c(
+  "Asap", "Asap Condensed", "Rethink Sans", "Piazzolla", "Spline Sans", "Spline Sans Mono"
+))
+
+## plot scripts
+source(here::here("showcase.R"))
+source(here::here("example-css-styling.R"))
+source(here::here("example-combined-plots.R"))
 ```
 
 
@@ -58,7 +69,7 @@ library(ggiraph)
 
 
 
-##
+---
 
 ::::: {.columns}
 
@@ -66,7 +77,7 @@ library(ggiraph)
 
 ### <span class='gradient-1'>Hi, I am Tanya</span>
 
-<div style='margin:-30px 0 30px 0;'>
+<div style='margin:-25px 0 30px 0;'>
 <a href='mailto:tanya@indievisual.tech' class='gradient-1' style='font-weight:700;'>tanya@indievisual.tech</a>
 </div>
 
@@ -89,7 +100,7 @@ your freelance title here
 
 ### <span class='gradient-2'>Hi, I am Cédric</span>
 
-<div style='margin:-30px 0 30px 0;'>
+<div style='margin:-25px 0 30px 0;'>
 <a href='mailto:viz@cedricscherer.com' class='gradient-2' style='font-weight:700;'>viz@cedricscherer.com</a>
 </div>
 
@@ -112,7 +123,7 @@ Independent professional in data visualization & information design
 
 
 
-## Why we love {ggplot2}<br>3 slides
+# Why we love {ggplot2}<br>3 slides
 
 
 
@@ -123,17 +134,24 @@ TODO: Tanya
 
 
 
-## Why we love {ggplot2}
+## {data-menu-title="Why we love ggplot2: Extensions" background-image="img/gghex.png" background-position="center" background-size="100%" background-color="#660068"}
 
-TODO: Cédric  
-Extensions &rarr; ggplot universe or hex logos 
+::: {.sr-only}
+A collection of extension packages for (and built with) ggplot2. A wild mixture of the most popular packages, packages for very specific use cases, packages that provide color palettes, and very experimental stuff.
+:::
 
 
 
-## Why we love {ggplot2}
+## {data-menu-title="Why we love ggplot2: Community" background-image="img/allison-horst-community.png" background-position="center" background-size="55%" background-color="#FFFFFF"}
 
-TODO: Cédric  
-Community &rarr; illustration from Allison
+::: {.sr-only}
+An illustration by Allison Horst: A person in a cape that reads “code hero” who looks like they are flying through the air while typing on a computer while saying “I’m doing a think all on my own!” The coder’s arms and legs have ropes attached to two hot air balloons lifting them up, with labels on the balloons including “teachers”, “bloggers”, “friends”, “developers”. Below the code hero, several people carry a trampoline with labels “support” and “community” that will catch them if they fall.
+:::
+
+::: footer
+Illustration by [Allison Horst](https://allisonhorst.com/allison-horst)
+:::
+
 
 
 
@@ -148,7 +166,67 @@ Use Cases Slide &rarr; storytelling (exploratory), web app development, interact
 
 
 
-# Why {ggiraph}<br>3 slides
+# Why {ggiraph}
+
+
+
+<!--## <span style='font-size:.7em;'>ggplot() + geom_*() + ...</span>-->
+<!--
+## {data-menu-title="Interactivity for ggplot2: A Comparison"}
+
+```{r}
+#| label: example-ggplot
+#| echo: false
+#| fig-align: center
+p_ggplot 
+```
+-->
+
+
+<!--## <span style='font-size:.7em;'>ggplotly(ggplot() + geom_*() + ...)</span>-->
+## {data-menu-title="Interactivity for ggplot2: A Comparison" .center}
+
+```{r}
+#| label: example-plotly
+#| echo: false
+#| fig-align: center
+p_plotly
+```
+
+
+
+<!--## <code style='font-size:.45em;'>girafe(ggobj = ggplot() + geom_interactive_*() + ...)</code>-->
+## {data-menu-title="Interactivity for ggplot2: A Comparison" .center}
+
+```{r}
+#| label: example-ggiraph
+#| echo: false
+#| fig-align: center
+girafe(ggobj = p_ggiraph, width_svg = 9, height_svg = 5.5)
+```
+
+
+
+## {data-menu-title="Interactivity for ggplot2: A Comparison" .center}
+
+```{r}
+#| label: example-ggiraph-styled
+#| echo: false
+#| fig-align: center
+girafe(
+  ggobj = p_ggiraph_css, width_svg = 9, height_svg = 5.5,
+  options = list(
+    opts_tooltip(
+      use_fill = TRUE, offx = 18, offy = -35,
+      css = "font-size:16pt;font-weight:500;padding:12px;font-family:asap condensed;"
+    ),
+    opts_hover(
+      css = "opacity:1;stroke-width:3px;r:5px;transition:all 0.2s ease;"
+    ),
+    opts_hover_inv(css = "opacity:0.3;")
+  )
+)
+```
 
 
 
@@ -166,83 +244,99 @@ Comparing geoms, geom ggplot -> geom ggiraph (show how similar)
 
 
 
-## Why {ggiraph}
-
-TODO: Cédric  
-Example of ggiraph vs. ggplotly  - show plotly ruins theme + doesnt allow for extensions
-
-
-
 # Examples
 
 
-## {data-menu-title="Simpsons Ratings"}
-
-```{r}
-#| label: setup-simpsons
-#| include: false
-#| cache: false
-
-gdtools::register_gfont("Rethink Sans")
-gdtools::addGFontHtmlDependency(family = "Rethink Sans")
-
-gdtools::register_gfont("Piazzolla")
-gdtools::addGFontHtmlDependency(family = "Piazzolla")
-
-tooltip_css <- "background-color:white;padding:15px;border-radius:3px;lineheight:1.4; border:2px solid white;"
-```
+## {data-menu-title="Example CSS Styling" .center}
 
 ```{r}
 #| label: heatmap-simpsons
 #| echo: false
-#| cache: false
-simpsons_imdb <- readr::read_csv("data/simpsons_imdb_ratings.csv")
-
-simp <-
-  simpsons_imdb |> 
-  mutate(
-    title = stringr::str_replace_all(stringr::str_wrap(title, 22), "\\n", "<br>"),
-    text_color = if_else(imdb_rating > 6.3 & imdb_rating < 8.5, "black", "white"),
-    lab = paste0("<span style='font-family:Rethink Sans;color:", text_color, ";'>", "S", sprintf("%02d", season), " E", sprintf("%02d", episode), "<br><b style='font-size:150%;font-weight:600;font-family:piazzolla;'>", title, "</b><br><br>IMDb Rating: ", sprintf("%1.1f", imdb_rating))
-  ) |> 
-  ggplot(aes(x = episode, y = season, fill = imdb_rating)) +
-  geom_tile_interactive(aes(tooltip = lab, data_id = id)) +
-  geomtextpath::geom_texthline(
-    yintercept = 9.5, linewidth = 1, label = "Season 10 starts", 
-    vjust = 1.4, hjust = .995, family = "Rethink Sans", lineheight = .6
-  ) +
-  coord_cartesian(expand = FALSE, clip = "off") +
-  scale_x_continuous(breaks = c(1, 1:5*5), limits = c(NA, 27), position = "top") +
-  scale_y_reverse(breaks = c(1, 1:5*5, 27)) +
-  scico::scale_fill_scico(
-    palette = "roma", name = "IMDb Rating",
-    guide = guide_colorbar(title.position = "top"), midpoint = mean(simpsons_imdb$imdb_rating)
-  ) +
-  labs(title = 'From season 10 onwards, IMDb ratings for\n"The Simpsons" dropped considerably',
-       x = "Episode →", y = "← Season") +
-  theme_minimal(base_family = "Rethink Sans", base_size = 15) +
-  theme(panel.grid = element_blank(),
-        axis.text = element_blank(),
-        axis.title.x.top = element_text(margin = margin(t = 0, b = 6), hjust = 0),
-        axis.title.y = element_text(margin = margin(r = 6), hjust = .99),
-        plot.title.position = "plot",
-        plot.title = element_text(face = "bold", family = "Piazzolla", size = rel(2), margin = margin(b = 25)),
-        legend.position = "top", legend.justification = "left",
-        legend.key.width = unit(6, "lines"), legend.key.height = unit(.45, "lines"),
-        #plot.background = element_rect(fill = "transparent", color = NA),
-        plot.margin = margin(rep(12, 1)))
+#| fig-align: center
 
 girafe(
-  ggobj = simp,
+  ggobj = p_simpsons,
   width_svg = 10.5, height_svg = 8.5,
+  fonts = list(sans = "Rethink Sans", serif = "Piazzolla"),
   options = list(
-    opts_tooltip(css = tooltip_css, opacity = 1, use_fill = TRUE, offx = 10, offy = 10),
+    opts_tooltip(
+      opacity = 1, use_fill = TRUE, offx = 12, offy = 12,
+      css = "background-color:white;padding:15px;lineheight:1.4;
+             border-radius:12px;border:2px solid white;
+             box-shadow: 5px 5px 5px rgba(0,0,0,0.3);"
+    ),
     opts_sizing(width = .7),
     opts_hover_inv(css = "opacity:0.3;"),
-    opts_hover(css = "stroke-width:2;")
+    opts_hover(css = "stroke-width:2px;stroke:black;")
   )
 )
 ```
+
+
+## {data-menu-title="Example CSS Styling" .center}
+
+```{r}
+#| label: example-styling-css-1
+#| eval: false
+#| code-line-numbers: "1,2,3,4,5,6,7,8,9,10,11,12,13,14|2|3,4,5,6,7,8,9,10,11,12,13"
+mutate(
+  text_color = if_else(rating > 6.3 & rating < 8.5, "black", "white"),
+  tooltip = paste0(
+    "<span style='font-family:rethink sans;color:", text_color, ";'>", 
+      "S", sprintf("%02d", season), " E", sprintf("%02d", episode), "<br>",
+      "<b style='font-size:150%;font-family:piazzolla;'>", 
+        str_replace_all(str_wrap(title, 22), "\\n", "<br>"), 
+      "</b>", 
+      "<br><br>IMDb Rating: ", sprintf("%1.1f", rating)),
+    "</span>"
+  )
+```
+
+
+## {data-menu-title="Example CSS Styling" .center}
+
+```{r}
+#| label: example-styling-css-2
+#| eval: false
+opts_tooltip(
+  opacity = 1, use_fill = TRUE, offx = 12, offy = 12,
+  css = "
+background-color:white; padding:15px; lineheight:1.4;
+border-radius:12px; border:2px solid white;
+box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+"
+),
+opts_hover_inv(css = "opacity:0.3;"),
+opts_hover(css = "stroke-width:2px;stroke:black;")
+```
+
+
+
+## Example Tanya
+
+
+
+## {data-menu-title="Example CSS Styling" .center}
+
+```{r}
+#| label: owid-combined
+#| echo: false
+#| fig-align: center
+girafe(
+  ggobj = combined_owid, width_svg = 12, height_svg = 5.3,
+  options = list(
+    opts_tooltip(use_fill = TRUE, css = "font-size:15px;font-weight:400;color:white;padding:7px;font-family:spline sans;lineheight:1.3;padding:10px;border-radius:5px;"), 
+    opts_hover(css = "stroke:white;stroke-width:0.5px;opacity:1;"),
+    opts_hover_inv(css = "opacity:0.2;"),
+    opts_toolbar(position = "bottomright"),
+    opts_zoom(min = 1, max = 4)
+  )
+)
+```
+
+
+
+## Example Tanya
 
 
 
@@ -250,14 +344,20 @@ girafe(
 
 
 
-## Questions
+## 1:1 Questions
 
 
 
-## Thank You
+---
 
+<center>
+<video autoplay="true" loop="true" height="70%">
+<source src="./img/uncharted-preview.mp4"> 
+</video>
+</center>
 
-
-## Promo
+::: footer
+[ggplot2-uncharted.com](https://www.ggplot2-uncharted.com/)
+:::
 
 

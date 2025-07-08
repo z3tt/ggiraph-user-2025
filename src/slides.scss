@@ -1,22 +1,18 @@
 /*-- scss:defaults --*/
 
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&display=swap');*/
 
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&display=swap');
-
-$font-family-main:     'Atkinson Hyperlegible', 'Tahoma', 'Arial', sans-serif;
+$font-family-main:     'Atkinson Hyperlegible Next', 'Tahoma', 'Arial', sans-serif;
 $font-family-display:  'Zilla Slab', 'Caladea', 'Bodoni MT', 'Bodoni 72', 'Georgia', 'Times', serif;
-$font-family-mono:     'Atkinson Hyperlegible Mono', 'Consolas', monospace;
+$font-family-mono:     'Spline Sans Mono', 'Atkinson Hyperlegible Mono', 'Consolas', monospace;
 $font-family-serif:    $font-family-display;
 
 $font-size-root:     1.05em;
 $font-size-small:    $font-size-root * .8;
 $font-size-tiny:     $font-size-root * .6;
-$font-size-large:    $font-size-root * 1.1;
 $font-size-h1:       $font-size-root * 2.1;
 $font-size-h2:       $font-size-root * 1.65;
 $font-size-h3:       $font-size-root * 1.3;
@@ -58,8 +54,14 @@ body, div, p, li, figcaption {
   font-family: $font-family-main !important;
 }
 
-h3, a {
+h3 {
   font-family: $font-family-display !important;
+  margin-top: 0px;
+}
+
+a {
+  font-family: $font-family-display;
+  margin-top: 0px;
 }
 
 .reveal p {
@@ -70,15 +72,12 @@ h3, a {
   margin-bottom: 16px;
 }
 
-.small {
-  font-size: .75rem;
-}
-
 .reveal pre {
   height: 98.1%
 }
 
 .reveal code {
+  font-size: $font-size-small;
   color: $color-primary !important;
 }
 
@@ -86,29 +85,29 @@ h3, a {
 
 h1.title {
   font-family: $font-family-display;
-  font-size: $font-size-h1;
+  font-size: $font-size-h1*1.3;
   font-weight: 900;
-  font-style: normal;
+  font-style: italic;
   color: $color-black;
   line-height: 1.15;
   text-align: center;
-  margin-bottom: 1em;
+  margin: 1em 0 .2em 0;
 }
 
 p.subtitle {
-  font-size: $font-size-large;
+  font-size: $font-size-h3;
   color: $color-black;
   font-weight: 700;
   line-height: 1;
   text-align: center;
 }
 
-.quarto-title-authors {
-  font-family: $font-family-main;
-  font-size: $font-size-tiny;
-  font-weight: 500;
-  color: $color-gray-dark;
-  /*font-style: italic;*/
+.quarto-title-authors, .quarto-title-author-name {
+  font-family: $font-family-display !important;
+  font-size: $font-size-root;
+  font-weight: 600;
+  color: $color-primary-dark;
+  line-height: 1.05;
   margin-top: 1.5em;
   text-align: center;
   justify-content: center;
@@ -137,7 +136,7 @@ p.subtitle {
   font-style: normal;
   color: $color-black;
   font-weight: 700;
-  margin-bottom: 2.8px;
+  margin-bottom: .8em;
 }
 
 .center h2 {
@@ -213,28 +212,15 @@ p.subtitle {
   margin-top: 1;
 }
 
-/*-- details --*/
-
-details {
-  margin-bottom: 5px;
-}
-
-details>summary {
-  font-family: $font-family-mono;
-  font-variation-settings: "MONO" 1;
-  font-size: 1.25rem;
-  color: $color-gray-dark;
-}
-
 /*-- code chunks --*/
 
-code>a, code>span {
+code > a, code > span, .sourceCode > a {
   font-family: $font-family-mono;
   font-size: $font-size-root;
 }
 
 .cell-code, .cell-output {
-  font-size: $font-size-h3;
+  font-size: $font-size-root;
 }
 
 .cell {
@@ -269,30 +255,6 @@ section.has-dark-background h1, section.has-dark-background h2, section.has-dark
 
 section.has-dark-background a:hover, .reveal .footer.has-dark-background a:hover {
   color: $link-color-hover-dark !important;
-}
-
-/*-- slide themes --*/
-
-/*--
-.reveal .slide .question {
-  background: $color-jungle-light;
-  border-left: 7px solid $color-jungle;
-  padding: 0.6rem 0.8rem 0.4rem 1.3rem;
-  margin-top: 2.5rem;
-}
-
-.reveal .slide .exercise {
-  background: $color-yellow-light;
-  border-left: 7px solid $color-yellow;
-  padding: 0.6rem 0.8rem 0.4rem 1.3rem;
-  margin-top: 2.5rem;
-}
-
-.reveal .slide .recap {
-  background: $color-purple-light;
-  border-left: 7px solid $color-purple;
-  padding: 0.6rem 0.8rem 0.4rem 1.3rem;
-  margin-top: 2.5rem;
 }
 
 /*-- decoration --*/
@@ -388,4 +350,20 @@ section.has-dark-background a:hover, .reveal .footer.has-dark-background a:hover
   font-family: $font-family-display;
   font-size: $font-size-tiny;
   font-weight: 800;
+  color: #DD6D18;
+}
+
+/* hide screen reader content */
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
 }
