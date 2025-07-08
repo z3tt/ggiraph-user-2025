@@ -407,7 +407,7 @@ TODO: Tanya
 :::
 
 
-
+<!--
 ---
 
 <center>
@@ -419,5 +419,5 @@ TODO: Tanya
 ::: footer
 [ggplot2-uncharted.com](https://www.ggplot2-uncharted.com/)
 :::
-
+-->
 
