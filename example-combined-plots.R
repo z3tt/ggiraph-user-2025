@@ -131,13 +131,21 @@ combined_owid <- plot_owid + map_owid +
   plot_layout(ncol = 2, widths = c(.4, .6)) +
   plot_annotation(theme = theme(plot.margin = margin(12, 12, 12, 12)))
 
-# girafe(
-#   ggobj = combined_owid, width_svg = 12, height_svg = 5.3,
-#   options = list(
-#     opts_tooltip(use_fill = TRUE, css = "font-size:17px;font-weight:400;color:white;padding:7px;font-family:spline sans;lineheight:1.3;padding:10px;border-radius:5px;"), 
-#     opts_hover(css = "stroke:white;stroke-width:0.5px;opacity:1;"),
-#     opts_hover_inv(css = "opacity:0.2;"),
-#     opts_toolbar(position = "topright"),
-#     opts_zoom(min = 1, max = 4)
-#   )
-# )
+girafe(
+  ggobj = combined_owid, width_svg = 12, height_svg = 5.3,
+  options = list(
+    opts_tooltip(use_fill = TRUE, css = "
+font-size: 17px;
+font-weight: 400;
+font-family: Spline Sans;
+color:white;
+padding: 10px;
+border:2px solid white;
+border-radius: 5px;
+"),
+    opts_hover(css = "stroke: white; stroke-width: 0.5px; opacity: 1;"),
+    opts_hover_inv(css = "opacity: 0.2;"),
+    opts_toolbar(position = "bottomright"),
+    opts_zoom(min = 1, max = 4)
+  )
+)

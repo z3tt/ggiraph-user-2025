@@ -54,6 +54,7 @@ gdtools::register_gfont("Rethink Sans")
 gdtools::register_gfont("Piazzolla")
 gdtools::register_gfont("Spline Sans")
 gdtools::register_gfont("Spline Sans Mono")
+
 gdtools::addGFontHtmlDependency(family = c(
   "Asap", "Asap Condensed", "Rethink Sans", "Piazzolla", "Spline Sans", "Spline Sans Mono"
 ))
@@ -120,7 +121,7 @@ Independent professional in data visualization & information design
 
 
 
-## Why We 💙 {ggplot2} {ggplot2}
+## Why We 💙 {ggplot2}
 
 Grammar of Graphics -> cake slide  
 TODO: Tanya
@@ -155,67 +156,7 @@ Illustration by [Allison Horst](https://allisonhorst.com/allison-horst)
 ## Why Go Interactive?
 
 TODO: Tanya  
-Use Cases Slide &rarr; storytelling (exploratory), web app development, interactive journalism, wow stakeholders (interactive slides) - but not everything has to be interactive (cf. goal, purpose, budget)  
-
-
-
-<!--## <span style='font-size:.7em;'>ggplot() + geom_*() + ...</span>-->
-<!--
-## {data-menu-title="Interactivity for ggplot2: A Comparison"}
-
-```{r}
-#| label: example-ggplot
-#| echo: false
-#| fig-align: center
-p_ggplot 
-```
--->
-
-
-<!--## <span style='font-size:.7em;'>ggplotly(ggplot() + geom_*() + ...)</span>-->
-## {data-menu-title="Interactivity for ggplot2: A Comparison" .center}
-
-```{r}
-#| label: example-plotly
-#| echo: false
-#| fig-align: center
-p_plotly
-```
-
-
-
-<!--## <code style='font-size:.45em;'>girafe(ggobj = ggplot() + geom_interactive_*() + ...)</code>-->
-## {data-menu-title="Interactivity for ggplot2: A Comparison" .center}
-
-```{r}
-#| label: example-ggiraph
-#| echo: false
-#| fig-align: center
-girafe(ggobj = p_ggiraph, width_svg = 9, height_svg = 5.5)
-```
-
-
-
-## {data-menu-title="Interactivity for ggplot2: A Comparison" .center}
-
-```{r}
-#| label: example-ggiraph-styled
-#| echo: false
-#| fig-align: center
-girafe(
-  ggobj = p_ggiraph_css, width_svg = 9, height_svg = 5.5,
-  options = list(
-    opts_tooltip(
-      use_fill = TRUE, offx = 18, offy = -35,
-      css = "font-size:16pt;font-weight:500;padding:12px;font-family:asap condensed;"
-    ),
-    opts_hover(
-      css = "opacity:1;stroke-width:3px;r:5px;transition:all 0.2s ease;"
-    ),
-    opts_hover_inv(css = "opacity:0.3;")
-  )
-)
-```
+Use Cases Slide &rarr; storytelling (exploratory), web app development, interactive journalism, wow stakeholders (interactive slides) - but not everything has to be interactive (cf. goal, purpose, budget) 
 
 
 
@@ -233,61 +174,72 @@ Comparing geoms, geom ggplot -> geom ggiraph (show how similar)
 Note: makes sense to include it after the plotly <-> ggiraph
 
 
-
-# Examples
-
-
-
-## Link Data Across Plots
+<!--
+## <span style='font-size:.7em;'>{ggplot2} 📦</span>
 
 ```{r}
-#| label: example-combined-plots
+#| label: example-ggplot
+#| echo: false
+#| fig-align: center
+p_ggplot 
+```
+-->
+
+
+## <span style='font-size:.7em;'>{ggiraph} 📦</span>
+
+```{r}
+#| label: example-ggiraph
 #| echo: false
 #| fig-align: center
 girafe(
-  ggobj = combined_owid, width_svg = 12, height_svg = 5.3,
+  ggobj = p_ggiraph_css, width_svg = 9, height_svg = 5.2,
   options = list(
-    opts_tooltip(use_fill = TRUE, css = "
-font-size:17px; font-weight:400; font-family:spline sans; 
-color:white; padding:10px; border-radius:5px;
-"), 
-    opts_hover(css = "stroke:white;stroke-width:0.5px;opacity:1;"),
-    opts_hover_inv(css = "opacity:0.2;"),
-    opts_toolbar(position = "bottomright"),
-    opts_zoom(min = 1, max = 4)
+    opts_tooltip(
+      use_fill = TRUE, offx = 18, offy = -35,
+      css = "font-size:16pt;font-weight:500;padding:12px;font-family:asap condensed;"
+    ),
+    opts_hover(
+      css = "opacity:1;stroke-width:3px;r:5px;transition:all 0.2s ease;"
+    ),
+    opts_hover_inv(css = "opacity:0.3;")
   )
 )
+``` 
+
+
+
+## <span style='font-size:.7em;'>{plotly} 📦</span>
+
+```{r}
+#| label: example-plotly
+#| echo: false
+#| fig-align: center
+p_plotly
 ```
 
-<div style='text-align:center;font-size:.4em;line-height:.85 !important;'>
-<br>Part of our interactive online workshop<br><a href="https://www.ggplot2-uncharted.com/" style='font-weight:700;font-size:1.3em;'>ggplot2-uncharted.com</a>
-</div>
 
 
-## Example Tanya
+# Showcase
 
 
 
 ---
 
 ```{r}
-#| label: heatmap-simpsons
+#| label: heatmap-simpsons-simple
 #| echo: false
 #| fig-align: center
 girafe(
   ggobj = p_simpsons,
-  width_svg = 10.8, height_svg = 9.5,
-  fonts = list(sans = "Rethink Sans", serif = "Piazzolla"),
+  width_svg = 10.8, height_svg = 9.2,
   options = list(
     opts_tooltip(
       opacity = 1, use_fill = TRUE, offx = 12, offy = 12,
-      css = "background-color:white;padding:15px;
-             border-radius:12px;border:2px solid white;
-             box-shadow: 5px 5px 5px rgba(0,0,0,0.3);"
+      css = "color: black; padding: 10px;"
     ),
-    opts_sizing(width = .7),
     opts_hover_inv(css = "opacity:0.3;"),
-    opts_hover(css = "stroke-width:2px;stroke:black;")
+    opts_sizing(width = .8)
   )
 )
 ```
@@ -299,7 +251,83 @@ girafe(
 <br>
 
 ```{r}
-#| label: example-styling-css-1
+#| label: example-styling-css-options-1
+#| eval: false
+#| code-line-numbers: "1,11|1,2,3,11|1,4,10,11|1,4,5,6,7,8,10,11|1,4,9,10,11"
+girafe(
+  ggobj = p_simpsons,
+  width_svg = 10.8, height_svg = 9.2,
+  options = list(
+    opts_tooltip(
+      opacity = 1, use_fill = TRUE, offx = 12, offy = 12,
+      css = "color: black; padding: 15px;"
+    ),
+    opts_hover_inv(css = "opacity: 0.3;")
+  )
+)
+```
+
+
+
+---
+
+```{r}
+#| label: heatmap-simpsons-advanced
+#| echo: false
+#| fig-align: center
+girafe(
+  ggobj = p_simpsons_advanced,
+  width_svg = 10.8, height_svg = 9.2,
+  options = list(
+    opts_tooltip(
+      opacity = 1, use_fill = TRUE, offx = 12, offy = 12,
+      css = "
+background-color: white; 
+padding: 15px;
+border-radius: 12px; 
+border: 2px solid white;
+box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+"
+    ),
+    opts_hover(css = "stroke-width:2px;stroke:black;"),
+    opts_hover_inv(css = "opacity:0.3;"),
+    opts_sizing(width = .8)
+  )
+)
+```
+
+
+
+## Style Tooltips & Effects
+
+<br>
+
+```{r}
+#| label: example-styling-css-options-2
+#| eval: false
+#| code-line-numbers: "1,3,4,5,6,7,8,9|10,11"
+opts_tooltip(
+  opacity = 1, use_fill = TRUE, offx = 12, offy = 12,
+  css = "
+background-color: white; 
+padding: 15px;
+border-radius: 12px; 
+border: 2px solid white;
+box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+"
+),
+opts_hover(css = "stroke-width: 2px; stroke: black;"),
+opts_hover_inv(css = "opacity: 0.3;")
+```
+
+
+
+## Style Tooltips & Effects
+
+<br>
+
+```{r}
+#| label: example-styling-css-mutate
 #| eval: false
 #| code-line-numbers: "1,2,3,4,5,6,7,8,9,10,11,12,13|2|3,4,5,6,7,8,9,10,11,12"
 mutate(
@@ -319,30 +347,47 @@ mutate(
 
 
 
-## Style Tooltips & Effects
-
-<br>
+## Link Data Across Plots
 
 ```{r}
-#| label: example-styling-css-2
-#| eval: false
-opts_tooltip(
-  opacity = 1, use_fill = TRUE, offx = 12, offy = 12,
-  css = "
-background-color: white; 
-padding: 15px;
-border-radius: 12px; 
-border: 2px solid white;
-box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
-"
-),
-opts_hover_inv(css = "opacity: 0.3;"),
-opts_hover(css = "stroke-width: 2px; stroke: black;")
+#| label: example-combined-plots
+#| echo: false
+#| fig-align: center
+girafe(
+  ggobj = combined_owid, width_svg = 12, height_svg = 5.3,
+  options = list(
+    opts_tooltip(use_fill = TRUE, css = "
+font-size: 17px; 
+font-weight: 400; 
+font-family: Spline Sans; 
+color:white; 
+padding: 10px; 
+border:2px solid white;
+border-radius: 5px; 
+"), 
+    opts_hover(css = "stroke: white; stroke-width: 0.5px; opacity: 1;"),
+    opts_hover_inv(css = "opacity: 0.2;"),
+    opts_toolbar(position = "bottomright"),
+    opts_zoom(min = 1, max = 4)
+  )
+)
 ```
 
+<div style='text-align:center;font-size:.4em;line-height:.85 !important;'>
+<br>Part of our interactive online workshop<br><a href="https://www.ggplot2-uncharted.com/" style='font-weight:700;font-size:1.3em;'>ggplot2-uncharted.com</a>
+</div>
 
 
-## Example Tanya
+
+## Highlight Example 
+
+TODO: Tanya
+
+
+
+## Shiny Example
+
+TODO: Tanya
 
 
 
