@@ -296,6 +296,8 @@ girafe(
 
 ## Style Tooltips & Effects
 
+<br>
+
 ```{r}
 #| label: example-styling-css-1
 #| eval: false
@@ -318,6 +320,8 @@ mutate(
 
 
 ## Style Tooltips & Effects
+
+<br>
 
 ```{r}
 #| label: example-styling-css-2
