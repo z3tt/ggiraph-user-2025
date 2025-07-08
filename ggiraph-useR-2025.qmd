@@ -276,7 +276,7 @@ color:white; padding:10px; border-radius:5px;
 #| fig-align: center
 girafe(
   ggobj = p_simpsons,
-  width_svg = 10.5, height_svg = 8.5,
+  width_svg = 10.8, height_svg = 9.5,
   fonts = list(sans = "Rethink Sans", serif = "Piazzolla"),
   options = list(
     opts_tooltip(

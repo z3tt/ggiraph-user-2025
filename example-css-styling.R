@@ -36,7 +36,7 @@ p_simpsons <-
   ) +
   labs(title = 'From season 10 onwards, IMDb ratings for\n"The Simpsons" dropped considerably',
        x = "Episode →", y = "← Season") +
-  theme_minimal(base_family = "Rethink Sans", base_size = 15) +
+  theme_minimal(base_family = "Rethink Sans", base_size = 16) +
   theme(panel.grid = element_blank(),
         axis.text = element_blank(),
         axis.title.x.top = element_text(margin = margin(t = 0, b = 6), hjust = 0),
