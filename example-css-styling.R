@@ -40,7 +40,7 @@ p_simpsons <-
   theme(panel.grid = element_blank(),
         axis.text = element_blank(),
         axis.title.x.top = element_text(margin = margin(t = 0, b = 6), hjust = 0),
-        axis.title.y = element_text(margin = margin(t = 1, r = 6), hjust = .99),
+        axis.title.y = element_text(margin = margin(l = 1, r = 6), hjust = .99),
         plot.title.position = "plot",
         plot.title = element_text(face = "bold", family = "Piazzolla", size = rel(2), margin = margin(b = 25)),
         legend.position = "top", legend.justification = "left",

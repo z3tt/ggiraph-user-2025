@@ -60,9 +60,9 @@ owid_tooltip <- owid |>
     color = recode(continent, !!! pal), 
     color_text = prismatic::clr_lighten(color, .6),
     tooltip = paste0(
-      "<span style='font-family:spline sans:'>",
-      "<span style='font-size:15px;color:", color_text, ";'>", continent, "</span><br>",
-      "<b style='font-size:22px;'>", country, "</b><br><br>",
+      "<span style='font-family:spline sans;font-weight:500;lineheight:1.4;'>",
+      "<span style='font-size:17px;color:", color_text, ";'>", continent, "</span><br>",
+      "<b style='font-size:24px;font-weight:700;'>", country, "</b><br><br>",
       "GDP per capita: <b>&ensp;$", round(gdp_per_capita / 1000, 3), " K</b><br>",
       "Overall population: <b>&ensp;", sprintf("%3.1f", pop_est / 10^6), " M</b><br>",
       "Share urban inhabitants: <b>&ensp;", round(urban_pop, 0), "%</b></span>"
@@ -76,7 +76,7 @@ plot_owid <-
   stat_smooth(method = "lm", color = "grey67", fill = "grey90") +
   geom_point_interactive(
     aes(color = continent, tooltip = tooltip, data_id = country), 
-    shape = 16, alpha = .67
+    shape = 16, alpha = .72
   ) +
   coord_cartesian(clip = "off", expand = FALSE) +
   scale_x_log10(labels = scales::label_dollar()) + 
@@ -134,7 +134,7 @@ combined_owid <- plot_owid + map_owid +
 # girafe(
 #   ggobj = combined_owid, width_svg = 12, height_svg = 5.3,
 #   options = list(
-#     opts_tooltip(use_fill = TRUE, css = "font-size:15px;font-weight:400;color:white;padding:7px;font-family:spline sans;lineheight:1.3;padding:10px;border-radius:5px;"), 
+#     opts_tooltip(use_fill = TRUE, css = "font-size:17px;font-weight:400;color:white;padding:7px;font-family:spline sans;lineheight:1.3;padding:10px;border-radius:5px;"), 
 #     opts_hover(css = "stroke:white;stroke-width:0.5px;opacity:1;"),
 #     opts_hover_inv(css = "opacity:0.2;"),
 #     opts_toolbar(position = "topright"),
