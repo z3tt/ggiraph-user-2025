@@ -31,7 +31,7 @@ knitr:
     dpi: 300
 execute:
   freeze: auto
-  cache: false
+  cache: true
   echo: true
   fig-width: 9
   fig-height: 5.5
@@ -129,6 +129,12 @@ TODO: Tanya
 
 
 ## {data-menu-title="Why we love ggplot2: Extensions" background-image="img/gghex.png" background-position="center" background-size="100%" background-color="#660068"}
+
+::: footer
+<span style='color:#D3D3D3;'>
+Explore Packages &rarr; <a style='color:#E8BEE9;' href='https://exts.ggplot2.tidyverse.org/gallery/'>ggplot2 Extension Gallery</a> + <a style='color:#E8BEE9;' href='https://github.com/erikgahner/awesome-ggplot2'>Awesome ggplot2 Project</a>
+</span>
+:::
 
 ::: {.sr-only}
 A collection of extension packages for (and built with) ggplot2. A wild mixture of the most popular packages, packages for very specific use cases, packages that provide color palettes, and very experimental stuff.
