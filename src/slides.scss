@@ -372,3 +372,66 @@ section.has-dark-background a:hover, .reveal .footer.has-dark-background a:hover
   width: 1px !important;
   white-space: nowrap !important;
 }
+
+
+.team-intro {
+      display: flex;
+      gap: 100px;
+      align-items: flex-start;
+    }
+
+    .team-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+    }
+
+    .member-name {
+      margin-bottom: 20px;
+    }
+
+    .member-photo {
+      width: 45%;
+      margin-bottom: 15px;
+    }
+
+    .social-icons {
+      margin: 15px 0;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .social-icon {
+      font-size: 1em;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .social-icon:hover {
+      opacity: 0.7;
+    }
+
+    /* Color variations */
+    .social-icon.purple {
+      color: purple;
+    }
+
+    .social-icon.teal {
+      color: teal;
+    }
+
+    .member-info {
+      margin: 10px 0;
+      font-size:2rem;
+    }
+
+    .info-period {
+      font-weight: bold;
+    }
+    
+    
+    
+           
