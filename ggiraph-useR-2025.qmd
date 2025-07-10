@@ -427,7 +427,7 @@ girafe(
 ```{r}
 #| echo: true
 #| eval: false
-#| code-line-numbers: "6-10|14"
+#| code-line-numbers: "5|6-10|14"
 
 p_simpsons_base <-
   simpsons_imdb |> 
