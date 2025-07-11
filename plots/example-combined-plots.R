@@ -20,7 +20,7 @@ countries_sf <- rnaturalearth::ne_countries(returnclass = "sf") |>
 
 countries <- sf::st_drop_geometry(countries_sf)
 
-owid_selected <- 
+owid_urban_selected <- 
   readr::read_csv(here::here("data", "urbanization-vs-gdp.csv")) |> 
   filter(Year == 2022) |> 
   select(
@@ -32,12 +32,7 @@ owid_selected <-
   ) |> 
   filter(!is.na(iso_a3))
 
-# owid <- owid_selected |> 
-#   left_join(countries) |> 
-#   mutate(region_un = if_else(iso_a3 == "SGP", "Asia", region_un)) |> 
-#   filter(!is.na(region_un))
-
-owid <- owid_selected |> 
+owid_urban <- owid_urban_selected |> 
   left_join(countries_sf) |> 
   mutate(
     region_un = if_else(iso_a3 == "SGP", "Asia", region_un),
@@ -53,9 +48,9 @@ pal <- rcartocolor::carto_pal(
   name = "Bold", n = 9
 )[c(1, 7, 5, 2, 3, 8)]
 
-names(pal) <- unique(owid$continent)
+names(pal) <- unique(owid_urban$continent)
 
-owid_tooltip <- owid |> 
+owid_urban <- owid_urban |> 
   mutate(
     color = recode(continent, !!! pal), 
     color_text = prismatic::clr_lighten(color, .6),
@@ -72,7 +67,7 @@ owid_tooltip <- owid |>
   arrange(-pop_est) 
 
 plot_owid <-
-  ggplot(owid_tooltip, aes(x = gdp_per_capita, y = urban_pop, size = pop_est)) +
+  ggplot(owid_urban, aes(x = gdp_per_capita, y = urban_pop, size = pop_est)) +
   stat_smooth(method = "lm", color = "grey67", fill = "grey90") +
   geom_point_interactive(
     aes(color = continent, tooltip = tooltip, data_id = country), 
@@ -111,7 +106,7 @@ plot_owid <-
   )
 
 map_owid <- 
-  ggplot(owid_tooltip) +
+  ggplot(owid_urban) +
   geom_sf(data = countries_sf, color = "transparent", fill = "grey82") +
   geom_sf_interactive(
     aes(fill = continent, tooltip = tooltip, data_id = country), 

@@ -1,14 +1,14 @@
 ---
 title: 'Plot Twist'
-subtitle: 'Adding Interactivity to the<br>Elegance of <code>ggplot2</code> with <code>ggiraph</code>'
+subtitle: 'Adding Interactivity to the<br>Elegance of {ggplot2} with {ggiraph}'
 # author:
 #   - name: Tanya Shapiro
 #     email: tanya@indievisual.tech
 #   - name: Cédric Scherer
 #     email: viz@cedricscherer.com
-author: "Tanya Shapiro & Cédric Scherer<br>useR 2025"
+author: "Tanya Shapiro & Cédric Scherer<br><span style='color:#99229B;'>useR 2025</span>"
 title-slide-attributes:
-    data-background-image: img/bg-placeholder.png
+    data-background-image: img/bg-aurora-interactive.png
     data-background-size: cover
 format:
   revealjs:
@@ -31,7 +31,7 @@ knitr:
     dpi: 300
 execute:
   freeze: auto
-  cache: false
+  cache: true
   echo: true
   fig-width: 9
   fig-height: 5.5
@@ -60,14 +60,16 @@ gdtools::addGFontHtmlDependency(family = c(
 ))
 
 ## plot scripts
-#source(here::here("plots/showcase.R"))
+source(here::here("plots/showcase.R"))
 source(here::here("plots/example-css-styling.R"))
-source(here::here("plots/doctor-who.R"))
-source(here::here("plots/line-graph.R"))
+source(here::here("plots/example-hover.R"))
+source(here::here("plots/example-hover-advanced.R"))
 source(here::here("plots/example-combined-plots.R"))
 
 
 ```
+
+
 
 ------------------------------------------------------------------------
 
@@ -82,6 +84,7 @@ source(here::here("plots/example-combined-plots.R"))
 
     <img src="img/tanya-circular-logo.png" class="member-photo" alt="Tanya Logo">
 
+    <!--
     <div class="social-icons">
       <a href="mailto:tanya@indievisual.tech" class="social-icon purple">
         <i class="fas fa-envelope"></i>
@@ -96,17 +99,24 @@ source(here::here("plots/example-combined-plots.R"))
         <i class="fab fa-github"></i>
       </a>
     </div>
+    -->
 
     <div class="member-info about">
       <span class="info-period entry">BEFORE</span><br>
-        Data Professional with Insurance Background
+        Data Professional with<br>Insurance Background
     </div>
 
     <div class="member-info about">
       <span class="info-period entry">NOW</span><br>
       Founder, Consultant IndieVisual
     </div>
+    
+    <div class="small" style="margin-top:40px;">
+      <a href="mailto:tanya@indievisual.tech" class="gradient-1">tanya@indievisual.tech</a>
+    </div>
   </div>
+    
+    
 
   <div class="team-member">
     <h3 class="member-name">
@@ -115,6 +125,7 @@ source(here::here("plots/example-combined-plots.R"))
 
     <img src="img/ced-circular-logo-jungle.png" class="member-photo" alt="Cedric Logo">
 
+    <!--
     <div class="social-icons">
       <a href="mailto:viz@cedricscherer.com" class="social-icon teal">
         <i class="fas fa-envelope"></i>
@@ -129,16 +140,20 @@ source(here::here("plots/example-combined-plots.R"))
         <i class="fab fa-github"></i>
       </a>
     </div>
+    -->
 
     <div class="member-info about">
       <span class="info-period entry">BEFORE</span><br>
-      Computational Ecologist
+      PhD in Computational Ecology
     </div>
 
     <div class="member-info about">
       <span class="info-period entry">NOW</span><br>
-      Independent professional in data visualization & information design
-
+      Data Visualization<br>Designer, Consultant & Educator
+    </div>
+    
+    <div class="small" style="margin-top:40px;">
+      <a href="mailto:viz@cedricscherer.com" class="gradient-2">viz@cedricscherer.com</a>
     </div>
   </div>
 
@@ -146,6 +161,8 @@ source(here::here("plots/example-combined-plots.R"))
 
 </html>
 ```
+
+
 
 ## Why we ❤️ ggplot2
 
@@ -161,7 +178,9 @@ source(here::here("plots/example-combined-plots.R"))
 A collection of extension packages for (and built with) ggplot2. A wild mixture of the most popular packages, packages for very specific use cases, packages that provide color palettes, and very experimental stuff.
 :::
 
-##  {data-menu-title="Why we love ggplot2: Community" background-image="img/allison-horst-community.png" background-position="center" background-size="55%" background-color="#FFFFFF"}
+
+
+##  {data-menu-title="Why we love ggplot2: Community" background-image="img/community-allison-horst-x-tidytuesday.png" background-position="center" background-size="55%" background-color="#FFFFFF"}
 
 ::: sr-only
 An illustration by Allison Horst: A person in a cape that reads “code hero” who looks like they are flying through the air while typing on a computer while saying “I’m doing a think all on my own!” The coder’s arms and legs have ropes attached to two hot air balloons lifting them up, with labels on the balloons including “teachers”, “bloggers”, “friends”, “developers”. Below the code hero, several people carry a trampoline with labels “support” and “community” that will catch them if they fall.
@@ -171,46 +190,82 @@ An illustration by Allison Horst: A person in a cape that reads “code hero” 
 Illustration by [Allison Horst](https://allisonhorst.com/allison-horst)
 :::
 
-## Interactive Data Viz
 
-::::: {style="display:flex;flex-direction:column;justify-content:center;height:50%;gap:20px;"}
+
+## {.center}
+
+:::: {style="text-align:center;"}
+Static plots <b class="simple-highlight-3">tell</b> a story.
+
 ::: fragment
-Static plots *tell* a story
+Interactive plots invite people to <b class="simple-highlight-1">explore</b> the story!
 :::
+::::
 
-::: fragment
-Interactive plots invites people to [explore]{style="font-style:italic"} the story
-:::
-:::::
+<br><br><br>
 
-## Placeholder
 
-Ced to put bike showcase here
+
+------------------------------------------------------------------------
+
+```{r}
+#| label: bikes-showcase
+#| echo: false
+#| fig-align: center
+girafe(
+  ggobj = p_ggiraph_css, width_svg = 9, height_svg = 5.5,
+  options = list(
+    opts_tooltip(
+      use_fill = TRUE, offx = 18, offy = -35,
+      css = "font-size:16pt;font-weight:500;padding:12px;font-family:asap condensed;"
+    ),
+    opts_hover(
+      css = "opacity:1;stroke-width:3px;r:5px;transition:all 0.2s ease;"
+    ),
+    opts_hover_inv(css = "opacity:0.3;")
+    )
+  )
+```
+
+
+
 
 ## Where To Start?
 
 ![Goldilocks trying to find the right fit for interactive viz](img/goldilocks-meme.png){fig-align="center"}
 
+
+
 ## The ggiraph Philosophy
 
 ::::: columns
-::: {.column width="60%" style="margin-top:8%"}
-<p style="font-family:'My Soul'">"If you know ggplot2...you already know ggiraph"</p>
-<p style="color:grey;font-size:1.5rem;">-Plausible quote from Hadley Wickham</p>
-:::
 
 ::: {.column width="40%"}
+![Hadey Wickham](img/hadley-bust.png){fig-alt="Hadley Wickham"}
+<!--
 <figure style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
 
 <img src="img/hadley-bust.png" alt="Hadley Wickham" style="width:90%"/>
 
-<figcaption>Hadley Wickham, Father of ggplot2</figcaption>
+<span style="color:grey;font-size:1.2rem;font-family:piazzolla !important;">Hadley Wickham, Father of ggplot2</span>
 
 </figure>
+-->
+:::
+
+::: {.column width="60%" style="margin-top:15%;"}
+<p class="quoted">
+  If you know ggplot2...<br>you already know ggiraph
+</p>
+<p style="color: #505050;font-size: 1.4rem; font-family: piazzolla !important; line-height: 1.1;">
+  Plausible quote from Hadley Wickham,<br>Father of ggplot2
+</p>
 :::
 :::::
 
-##  **Total of 50 interactive** `ggiraph` **geoms!** 
+
+
+##  50 interactive `ggiraph` geoms!
 
 Consistent naming convention to match ggplot2 geoms
 
@@ -221,15 +276,45 @@ Consistent naming convention to match ggplot2 geoms
 | `geom_line`  | ➡️  | `geom_line_interactive`  |
 | `geom_tile`  | ➡️  | `geom_tile_interactive`  |
 
-::: fragment:::
-Export result directly to HTML - or use with Quarto, R Markdown, or Shiny
+::: {.fragment style="margin: 50px 0 0 2.5em;"}
+Export result directly as <b class="simple-highlight-1">HTML widgets</b> —<br>or use with Quarto, R Markdown, or Shiny 🙌
 :::
+
+
 
 # Examples: Tooltips
 
+
+
 ## Setting up Tooltips
 
-Ced to put in simple code snippit here
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1-7|2,3,5|9-18|12-15"
+
+p <- ggplot(simpsons_imdb, aes(x = episode, y = season, fill = rating)) +
+  geom_tile_interactive(
+    aes(tooltip = title, data_id = id), 
+    color = "white", stroke = .2
+  ) +
+  geomtextpath::geom_texthline(...) +
+  ...
+
+girafe(
+  ggobj = p,
+  options = list(
+    opts_tooltip(
+      opacity = 1, use_fill = TRUE,
+      css = "color: black; padding: 15px;"
+    ),
+    opts_hover(css = "stroke-width: 1;"),
+    opts_hover_inv(css = "opacity: 0.3;")
+  )
+)
+```
+
+
 
 ------------------------------------------------------------------------
 
@@ -240,18 +325,20 @@ Ced to put in simple code snippit here
 
 girafe(
   ggobj = p_simpsons,
-  width_svg = 10.8, height_svg = 9,
+  width_svg = 10.8, height_svg = 8.5,
   options = list(
     opts_tooltip(
       opacity = 1, use_fill = TRUE,
       css = "color: black; padding: 15px;"
     ),
     opts_sizing(width = .8),
-    opts_hover(css = "stroke-width: 2;"),
+    opts_hover(css = "stroke-width: 1;"),
     opts_hover_inv(css = "opacity: 0.3;")
   )
 )
 ```
+
+
 
 ------------------------------------------------------------------------
 
@@ -262,49 +349,65 @@ girafe(
 
 girafe(
   ggobj = p_simpsons_advanced,
-  width_svg = 10.8, height_svg = 9,
+  width_svg = 10.8, height_svg = 8.5,
   options = list(
     opts_tooltip(
       opacity = 1, use_fill = TRUE,
       css = "color: black; padding: 15px;"
     ),
     opts_sizing(width = .8),
-    opts_hover(css = "stroke-width: 2;"),
+    opts_hover(css = "stroke-width: 1;"),
     opts_hover_inv(css = "opacity: 0.3;")
   )
 )
 ```
 
-## Code - Advanced Tooltip
+
+
+## Create More Advanced Tooltips
 
 ```{r}
 #| echo: true
 #| eval: false
-#| code-line-numbers: "5|6-10|14"
+#| code-line-numbers: "2-12|6-11|21-30"
 
-p_simpsons_base <-
+p <- 
   simpsons_imdb |> 
   mutate(
     title_wrapped = stringr::str_replace_all(stringr::str_wrap(title, 22), "\\n", "<br>"),
     text_color = if_else(rating > 6.3 & rating < 8.5, "black", "white"),
-    lab = paste0("<span style='font-family:rethink sans;color:", text_color, ";'>", "S", 
-                 sprintf("%02d", season), " E", sprintf("%02d", episode), 
-                 "<br><b style='font-size:150%;font-weight:600;font-family:piazzolla;'>", 
-                 title_wrapped, "</b><br><br>IMDb Rating: ", sprintf("%1.1f", rating))
-  )
+    tooltip_text = paste0(
+      "<span style='font-family:rethink sans;color:", text_color, ";'>", 
+      "S", sprintf("%02d", season), " E", sprintf("%02d", episode), "<br>",
+      "<b style='font-size:150%;font-weight:600;font-family:piazzolla;'>", 
+      title_wrapped, "</b><br><br>", "
+      IMDb Rating: ", sprintf("%1.1f", rating))
+  ) |> 
+  ggplot(aes(x = episode, y = season, fill = rating)) +
+  geom_tile_interactive(
+    aes(tooltip = tooltip_text, data_id = id), 
+    color = "white", stroke = .2
+  ) +
+  geomtextpath::geom_texthline(...) +
+  ...
 
-p_simpsons_advanced <-
-  p_simpsons_base +
-  geom_tile_interactive(aes(tooltip = lab, data_id = id), color = "white", stroke = .2) +
-  geomtextpath::geom_texthline(
-    yintercept = 9.5, linewidth = 1, label = "Season 10 starts", 
-    vjust = 1.4, hjust = .995, family = "Rethink Sans", lineheight = .6
+girafe(
+  ggobj = p,
+  options = list(
+    opts_tooltip(
+      opacity = 1, use_fill = TRUE,
+      css = "color: black; padding: 15px;"
+    ),
+    opts_hover_inv(css = "opacity: 0.3;")
   )
-
+)
 ```
 
 
+
 # Example: Hovering
+
+
 
 ##  {background-color="black"}
 
@@ -326,7 +429,9 @@ p_simpsons_advanced <-
    )
 ```
 
-## Code - Basic Hover
+
+
+## Basic Hover Effects
 
 ```{r}
 #| echo: true
@@ -496,6 +601,8 @@ doctor_who_basic_plot<-ggplot() +
    )
 ```
 
+
+
 ##  {background-color="black"}
 
 ```{r}
@@ -533,7 +640,9 @@ doctor_who_basic_plot<-ggplot() +
  )
 ```
 
-## Code - Advanced Hover
+
+
+## Advanced Hover Effects
 
 ```{r}
 #| echo: true
@@ -567,7 +676,11 @@ ggiraph::girafe(
 
 ```
 
-# ...a creative use case with ggiraph hover
+
+
+# ...a creative use case with ggiraph hover<br><br>👀{background-color="#212121" transiton="zoom"}
+
+
 
 ##  {#slide3-id data-menu-title="advanced-hover-2"}
 
@@ -593,9 +706,15 @@ ggiraph::girafe(
    
 ```
 
+
+
 # Example: Combo Plots
 
-## Combo Plots
+
+
+## Linking Data Across Plots
+
+<br>
 
 ```{r}
 #| label: example-combined-plots
@@ -621,17 +740,30 @@ border-radius: 5px;
 )
 ```
 
-## Code - Combo Plot
+
+
+## Combo Plot with {patchwork}
 
 ```{r}
 #| echo: true
 #| eval: false
-#| code-line-numbers: "1-4|6"
+#| code-line-numbers: "1-5,8-12|15-16"
+plot_owid <- ggplot(data = owid_urban, ...) +
+  geom_point_interactive(
+    aes(tooltip = tooltip, data_id = country, color = continent), 
+    shape = 16, alpha = .72
+  ) +
+  ...
 
+map_owid <- ggplot(data = owid_urban, ...) +
+  geom_sf_interactive(
+    aes(tooltip = tooltip, data_id = country, fill = continent), 
+    color = "transparent", linewidth = .2
+  ) 
+  ...
 
 combined_owid <- plot_owid + map_owid +
-  plot_layout(ncol = 2, widths = c(.4, .6)) +
-  plot_annotation(theme = theme(plot.margin = margin(12, 12, 12, 12)))
+  plot_layout(ncol = 2, widths = c(.4, .6))
 
 girafe(
   ggobj = combined_owid, width_svg = 12, height_svg = 5.3,
@@ -654,7 +786,11 @@ girafe(
 
 ```
 
+
+
 # Example: Shiny
+
+
 
 ------------------------------------------------------------------------
 
@@ -668,9 +804,29 @@ girafe(
 </iframe>
 ```
 
-## Outro
 
-Placeholder for outro
+
+## <span style="color: #212121;">Thank you!</span>
+
+### <span class="simple-highlight-2">Want to learn more?</span>
+
+Code Examples 👉 [github.com/z3tt/ggiraph-user-2025](https://github.com/z3tt/ggiraph-user-2025)
+ggiraph Book by David Gohel 👉 [rdata.fr/ggiraph-book](https://www.ardata.fr/ggiraph-book/)
+
+### <span class="simple-highlight-3">Fancy a workshop or collaboration?</span>
+
+We are always open for consulting and trainings!
+
+<div style="padding-top: 5px;">
+<a href="mailto:tanya@indievisual.tech" class="gradient-1" style="font-weight:700;">
+<i class="fas fa-envelope"></i>&nbsp;tanya@indievisual.tech
+</a>&ensp;
+<a href="mailto:viz@cedricscherer.com" class="gradient-2" style="font-weight:700;">
+<i class="fas fa-envelope"></i>&nbsp;viz@cedricscherer.com
+</a>
+</div>
+
+
 
 ##  {.center data-menu-title="ggplot2 [un]charted"}
 
