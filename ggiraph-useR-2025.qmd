@@ -303,9 +303,6 @@ p_simpsons_advanced <-
 
 ```
 
-## Showstopper Goes Here
-
-Embed Ced's bike plot here
 
 # Example: Hovering
 
@@ -329,7 +326,7 @@ Embed Ced's bike plot here
    )
 ```
 
-## Code - Basic Highlight
+## Code - Basic Hover
 
 ```{r}
 #| echo: true
@@ -536,7 +533,7 @@ doctor_who_basic_plot<-ggplot() +
  )
 ```
 
-## Code - Advanced Highlight
+## Code - Advanced Hover
 
 ```{r}
 #| echo: true
@@ -557,7 +554,7 @@ ggiraph::girafe(
     ),
     #remove default opts_hover settings
     ggiraph::opts_hover(css=""),
-    #inverted hover, color points grey
+    #inverted hover, use girafe_css for more control on hover elements
     ggiraph::opts_hover_inv(
       girafe_css(
         css = "", 
