@@ -36,7 +36,6 @@ execute:
   fig-width: 9
   fig-height: 5.5
   fig-align: center
-  
 ---
 
 ```{r}
@@ -148,29 +147,35 @@ source(here::here("plots/example-combined-plots.R"))
 </html>
 ```
 
-# Some Background
-
 ## Why we ❤️ ggplot2
 
-::::: columns
-::: {.column width="50%" style="font-size:2rem"}
--   **Grammar of Graphics** - intuitive and powerful
--   **Layered approach** - build plots step by step
--   **Beautiful & customizable** - flexible styling
--   **Extensible ecosystem** - endless possibilities & extensions
--   **Community** - best part, the people! #TidyTuesday
+![](img/ggplot-cake-full.png){fig-alt="Slide comparing ggplot2 to a layered cake." fig-align="center"}
+
+##  {data-menu-title="Why we love ggplot2: Extensions" background-image="img/gghex.png" background-position="center" background-size="100%" background-color="#660068"}
+
+::: footer
+[ Explore Packages → <a style='color:#E8BEE9;' href='https://exts.ggplot2.tidyverse.org/gallery/'>ggplot2 Extension Gallery</a> + <a style='color:#E8BEE9;' href='https://github.com/erikgahner/awesome-ggplot2'>Awesome ggplot2 Project</a> ]{style="color:#D3D3D3;"}
 :::
 
-::: {.column width="50%"}
-![Illustration by Allison Horst](img/allison-horst-community.png)
+::: sr-only
+A collection of extension packages for (and built with) ggplot2. A wild mixture of the most popular packages, packages for very specific use cases, packages that provide color palettes, and very experimental stuff.
 :::
-:::::
 
-## What is Interactive Data Visualization?
+##  {data-menu-title="Why we love ggplot2: Community" background-image="img/allison-horst-community.png" background-position="center" background-size="55%" background-color="#FFFFFF"}
+
+::: sr-only
+An illustration by Allison Horst: A person in a cape that reads “code hero” who looks like they are flying through the air while typing on a computer while saying “I’m doing a think all on my own!” The coder’s arms and legs have ropes attached to two hot air balloons lifting them up, with labels on the balloons including “teachers”, “bloggers”, “friends”, “developers”. Below the code hero, several people carry a trampoline with labels “support” and “community” that will catch them if they fall.
+:::
+
+::: footer
+Illustration by [Allison Horst](https://allisonhorst.com/allison-horst)
+:::
+
+## Interactive Data Viz
 
 ::::: {style="display:flex;flex-direction:column;justify-content:center;height:50%;gap:20px;"}
 ::: fragment
-Static plots tell a story
+Static plots *tell* a story
 :::
 
 ::: fragment
@@ -178,134 +183,20 @@ Interactive plots invites people to [explore]{style="font-style:italic"} the sto
 :::
 :::::
 
-## Use Cases for Interactive Viz
+## Placeholder
 
-```{=html}
-    <style>
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top:2rem;
-        }
+Ced to put bike showcase here
 
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
+## Where To Start?
 
-        .card-header {
-            display: flex;
-            align-items: center;
-        }
-
-        .card-icon {
-            font-size: 2rem;
-            color: #9b59b6;
-            margin-right: 1rem;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin: 0;
-        }
-
-        .card-features {
-            list-style: disc;           
-            padding-left: 1.5rem;
-        }
-
-        .card-features li {
-            color: #5a6c7d;
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <div class="cards-container">
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-search-plus card-icon"></i>
-                <h3 class="card-title">Exploration</h3>
-            </div>
-            <ul class="card-features">
-                <li>Hover for details</li>
-                <li>Click to filter</li>
-                <li>Zoom and pan</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-tachometer-alt card-icon"></i>
-                <h3 class="card-title">Dashboards</h3>
-            </div>
-            <ul class="card-features">
-                <li>Real-time updates</li>
-                <li>User-driven analysis</li>
-                <li>Multiple linked views</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-book-open card-icon"></i>
-                <h3 class="card-title">Storytelling</h3>
-            </div>
-            <ul class="card-features">
-                <li>Guided narratives</li>
-                <li>Progressive disclosure</li>
-                <li>Engagement boost</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-person-chalkboard card-icon"></i>
-                <h3 class="card-title">Presentations</h3>
-            </div>
-            <ul class="card-features">
-                <li>Live demonstrations</li>
-                <li>Audience participation</li>
-                <li>Memorable experiences</li>
-            </ul>
-        </div>
-    </div>
-```
-
-## Where to start if you're an R user?
-
-::::: {.columns style="display:flex;"}
-::: {.column width="50%" style="padding-right:15px"}
--   Starting something new can feel overwhelming
--   Interactive data viz requires extensive knowledge in Javascript & D3
--   What if we could build from a familiar starting point?
-:::
-
-::: {.column width="50%"}
-![](img/colbert-overwhelmed.gif){style="height:600px;"}
-:::
-:::::
+![Goldilocks trying to find the right fit for interactive viz](img/goldilocks-meme.png){fig-align="center"}
 
 ## The ggiraph Philosophy
 
 ::::: columns
 ::: {.column width="60%" style="margin-top:8%"}
-<p style="font-style:italic;font-weight:bold;">
-
-"If you know ggplot2...you already know ggiraph"
-
-</p>
-
-<p style="color:grey;font-size:1.5rem;">
-
--Plausible quote from Hadley Wickham
-
-</p>
+<p style="font-family:'My Soul'">"If you know ggplot2...you already know ggiraph"</p>
+<p style="color:grey;font-size:1.5rem;">-Plausible quote from Hadley Wickham</p>
 :::
 
 ::: {.column width="40%"}
@@ -319,9 +210,9 @@ Interactive plots invites people to [explore]{style="font-style:italic"} the sto
 :::
 :::::
 
-## `ggiraph` interactive geoms
+##  **Total of 50 interactive** `ggiraph` **geoms!** 
 
-**Total of 50 interactive geoms!** Consistent naming convention to match ggplot2 geoms
+Consistent naming convention to match ggplot2 geoms
 
 | ggplot2      |     | ggiraph                  |
 |--------------|-----|--------------------------|
@@ -330,19 +221,15 @@ Interactive plots invites people to [explore]{style="font-style:italic"} the sto
 | `geom_line`  | ➡️  | `geom_line_interactive`  |
 | `geom_tile`  | ➡️  | `geom_tile_interactive`  |
 
-## Why ggiraph?
-
-✅ **Familiar syntax** - Just add `_interactive` to your geoms
-
-✅ **No JavaScript required** - Stay in your R comfort zone
-
-✅ **R universe**- Works with Quarto, Shiny, R Markdown,
-
-✅ **HTML widgets** - Easy to embed and share
-
-✅ **Use with other extensions** - Doesn't interefere with non-interactive geoms
+::: fragment:::
+Export result directly to HTML - or use with Quarto, R Markdown, or Shiny
+:::
 
 # Examples: Tooltips
+
+## Setting up Tooltips
+
+Ced to put in simple code snippit here
 
 ------------------------------------------------------------------------
 
@@ -364,40 +251,6 @@ girafe(
     opts_hover_inv(css = "opacity: 0.3;")
   )
 )
-```
-
-## Code - Basic Tooltip
-
-```{r}
-#| echo: true
-#| eval: false
-#| code-line-numbers: "3-6|16-18"
-
-p_simpsons <-
-  p_simpsons_base +
-  geom_tile_interactive(
-    aes(tooltip = title, data_id = id), 
-    color = "white", stroke = .2
-    ) +
-  geomtextpath::geom_texthline(
-    yintercept = 9.5, linewidth = 1, label = "Season 10 starts", 
-    vjust = 1.4, hjust = .995, family = "Rethink Sans", lineheight = .6
-  )
-
-girafe(
-  ggobj = p_simpsons,
-  width_svg = 10.8, height_svg = 9.5,
-  options = list(
-    opts_tooltip(
-      opacity = 1, use_fill = TRUE,
-      css = "color: black; padding: 15px;"
-    ),
-    opts_sizing(width = .7),
-    opts_hover(css = "stroke-width: 2;"),
-    opts_hover_inv(css = "opacity: 0.3;")
-  )
-)
-
 ```
 
 ------------------------------------------------------------------------
@@ -450,11 +303,11 @@ p_simpsons_advanced <-
 
 ```
 
-## Showstopper Goes Here 
+## Showstopper Goes Here
 
 Embed Ced's bike plot here
 
-# Example: Hovering & Highlighting
+# Example: Hovering
 
 ##  {background-color="black"}
 
@@ -804,21 +657,23 @@ girafe(
 
 ```
 
-# Example: Shiny 
+# Example: Shiny
 
 ------------------------------------------------------------------------
 
 ```{=html}
 <iframe
-  id="inlineFrameExample"
-  title="Inline Frame Example"
+  id="ggiraph-shiny"
+  title="Shiny App Example"
   width="1000"
-  height="600"
-  src="https://tshapiro.shinyapps.io/pelotanya/">
+  height="800"
+  src="https://tshapiro.shinyapps.io/shiny-ggiraph/">
 </iframe>
 ```
 
-## Thank You!
+## Outro
+
+Placeholder for outro
 
 ##  {.center data-menu-title="ggplot2 [un]charted"}
 
