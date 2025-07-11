@@ -369,7 +369,7 @@ girafe(
 ```{r}
 #| echo: true
 #| eval: false
-#| code-line-numbers: "2-12|6-11|21-30"
+#| code-line-numbers: "2-12|6-11|15|21-30"
 
 p <- 
   simpsons_imdb |> 
@@ -398,6 +398,7 @@ girafe(
       opacity = 1, use_fill = TRUE,
       css = "color: black; padding: 15px;"
     ),
+    opts_hover(css = "stroke-width: 1;"),
     opts_hover_inv(css = "opacity: 0.3;")
   )
 )
@@ -436,7 +437,7 @@ girafe(
 ```{r}
 #| echo: true
 #| eval: false
-#| code-line-numbers: "3-12|151-160"
+#| code-line-numbers: "3-12|157,158"
 
 
 doctor_who_basic_plot<-ggplot() +
