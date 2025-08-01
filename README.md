@@ -8,6 +8,13 @@ In this talk, Tanya Shapiro and Cédric Scherer will demonstrate why ggiraph sta
 
 Whether you're looking to make your research more engaging, enhance dashboards, or create interactive reports, this talk will provide a solid foundation for elevating your data storytelling with interactive visualizations.
 
+## Codes for Showcase Examples
+
+* [Intro Showcase "TfL Bikes"](https://github.com/z3tt/ggiraph-user-2025/blob/main/plots/showcase.R)
+* [Style Tooltips](https://github.com/z3tt/ggiraph-user-2025/blob/main/plots/example-css-styling.R)
+* [Modify Hovering Effects](https://github.com/z3tt/ggiraph-user-2025/blob/main/plots/example-hover.R)
+* [Link Data across Plots](https://github.com/z3tt/ggiraph-user-2025/blob/main/plots/example-combined-plots.R)
+
 ## Resources mentioned
 
 * ggiraph Book by David Gohel 👉 [ardata.fr/ggiraph-book](https://www.ardata.fr/ggiraph-book/)
