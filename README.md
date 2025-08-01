@@ -1,6 +1,6 @@
 # Plot Twist: Adding Interactivity to the Elegance of ggplot2 with ggiraph
 
-### Talk for useR 2025 by [Cédric Scherer](https://www.cedricscherer.com/) and [Tanya Shapiro](www.indievisual.tech)
+### Talk for [useR 2025](https://user2025.r-project.org/) by [Cédric Scherer](https://www.cedricscherer.com/) and [Tanya Shapiro](www.indievisual.tech)
 
 One of the most common critiques of ggplot2 is its lack of built-in interactivity. While static plots are powerful for storytelling, interactive visualizations can enhance exploration, engagement, and accessibility. The ggiraph package finally provides a seamless way to add interactivity to ggplot2—enabling hover effects, tooltips, and clickable elements—while preserving the familiar layered approach and custom theming.
 
