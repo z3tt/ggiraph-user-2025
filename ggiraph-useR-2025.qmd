@@ -192,6 +192,10 @@ Illustration by [Allison Horst](https://allisonhorst.com/allison-horst)
 
 
 
+# Why go interactive?
+
+
+
 ## {.center}
 
 :::: {style="text-align:center;"}
@@ -410,7 +414,7 @@ girafe(
 
 
 
-##  {background-color="black"}
+------------------------------------------------------------------------
 
 ```{r}
 #| label: doctor-who-basic
@@ -604,7 +608,7 @@ doctor_who_basic_plot<-ggplot() +
 
 
 
-##  {background-color="black"}
+------------------------------------------------------------------------
 
 ```{r}
 #| label: doctor-who-advanced
@@ -648,7 +652,7 @@ doctor_who_basic_plot<-ggplot() +
 ```{r}
 #| echo: true
 #| eval: false
-#| code-line-numbers: "13-20"
+#| code-line-numbers: "12-20"
 
 
 ggiraph::girafe(
