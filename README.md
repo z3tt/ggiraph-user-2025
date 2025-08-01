@@ -10,6 +10,6 @@ Whether you're looking to make your research more engaging, enhance dashboards, 
 
 ## Resources mentioned
 
-* ggiraph Book by David Gohel 👉 [rdata.fr/ggiraph-book](https://www.ardata.fr/ggiraph-book/)
+* ggiraph Book by David Gohel 👉 [ardata.fr/ggiraph-book](https://www.ardata.fr/ggiraph-book/)
 * ggplot2 Extension Gallery 👉 [exts.ggplot2.tidyverse.org/gallery](https://exts.ggplot2.tidyverse.org/gallery)
 * Awesome ggplot2 Collection by Eric Gahner 👉 [github.com/erikgahner/awesome-ggplot2](https://github.com/erikgahner/awesome-ggplot2)
