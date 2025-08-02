@@ -105,7 +105,7 @@ emissions_plot<-ggplot()+
     alpha = 0.001,
     shape = 19,
     size = 4,
-    show.legend = F
+    show.legend = FALSE
   )+
   #recolor lines
   scale_color_manual(values = unlist(plot_co_pal))+
@@ -145,7 +145,7 @@ emissions_plot<-ggplot()+
 #   width_svg = 8,
 #   height_svg = 6,
 #   options = list(
-#     ggiraph::opts_toolbar(saveaspng = F),
+#     ggiraph::opts_toolbar(saveaspng = FALSE),
 #     opts_tooltip(css = "font-family:Roboto"),
 #     opts_hover(
 #       css = "stroke-opacity:100%;fill-opacity:100%",

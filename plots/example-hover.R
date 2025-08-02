@@ -4,6 +4,12 @@ library(glue)
 library(ggtext)
 library(geomtextpath)
 
+gdtools::register_gfont("Roboto")
+gdtools::register_gfont("Roboto Mono")
+gdtools::addGFontHtmlDependency(family = c("Roboto", "Roboto Mono"))
+
+theme_set(theme_grey())
+
 #break out data for eps
 episodes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-11-23/episodes.csv')
 
@@ -422,7 +428,7 @@ df_doc_avg <- df_eps|>
  #   ggobj = doctor_who_advanced_plot,
  #   options = list(
  #     #turnoff download png
- #    ggiraph::opts_toolbar(saveaspng = F),
+ #    ggiraph::opts_toolbar(saveaspng = FALSE),
  #    #default tooltip font
  #    ggiraph::opts_tooltip(
  #      css = "font-family:Roboto;"
