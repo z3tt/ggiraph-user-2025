@@ -1,11 +1,6 @@
 ---
 title: 'Plot Twist'
 subtitle: 'Adding Interactivity to the<br>Elegance of {ggplot2} with {ggiraph}'
-# author:
-#   - name: Tanya Shapiro
-#     email: tanya@indievisual.tech
-#   - name: Cédric Scherer
-#     email: viz@cedricscherer.com
 author: "Tanya Shapiro & Cédric Scherer<br><span style='color:#99229B;'>useR 2025</span>"
 title-slide-attributes:
     data-background-image: img/bg-aurora-interactive.png
